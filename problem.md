@@ -12,6 +12,7 @@ of the two csv files
  - **issues.csv :** 
 
 File contains issue details in the below order
+
 	IssueId
 	Issue Summary
 	created Date                (in format dd/mm/yyyy)
@@ -25,13 +26,15 @@ File contains issue details in the below order
     IS001,issue summary1,10/04/2019,17/04/2019,HIGH,CLOSED,101
 
 - **employees.csv :** 
+
 File contains the employee details in the below order
+
 	Employee Id
 	Employee Name
 	Location of Employee
 
     Sample Data:
-    
+
     101,Sunil,Bangalore
 
 This project contains the boilerplate code for the solution.  The detailed instructions 
