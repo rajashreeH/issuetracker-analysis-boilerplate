@@ -2,7 +2,7 @@
 
     This problem involves reading issues stored in a CSV file and performing search and analysis on the data.
 
-####Input Files:
+#### Input Files:
 
 **CAUTION : Do not modify the data present in the input files**
 
@@ -10,25 +10,28 @@ The input files are located in the 'src/data' folder of this project. Given belo
 of the two csv files 
 
  - **issues.csv :** 
-  File contains issue details in the below order
-  - IssueId
-  - Issue Summary
-  - created Date                (in format dd/mm/yyyy)
-  - Expected Resolution Date    (in format dd/mm/yyyy)
-  - Priority                    (can have values HIGH, MEDIUM, LOW)
-  - Status                      (can have values OPEN, CLOSED)
-  - Issue Assigned to           (Employee ID, This employee id should be present in employees file ) 
+
+File contains issue details in the below order
+	IssueId
+	Issue Summary
+	created Date                (in format dd/mm/yyyy)
+	Expected Resolution Date    (in format dd/mm/yyyy)
+	Priority                    (can have values HIGH, MEDIUM, LOW)
+	Status                      (can have values OPEN, CLOSED)
+	Issue Assigned to           (Employee ID, This employee id should be present in employees file ) 
 
     Sample Data:
+
     IS001,issue summary1,10/04/2019,17/04/2019,HIGH,CLOSED,101
 
 - **employees.csv :** 
-  File contains the employee details in the below order
-  - Employee Id
-  - Employee Name
-  - Location of Employee
+File contains the employee details in the below order
+	Employee Id
+	Employee Name
+	Location of Employee
 
-    Sample Data
+    Sample Data:
+    
     101,Sunil,Bangalore
 
 This project contains the boilerplate code for the solution.  The detailed instructions 
@@ -44,11 +47,10 @@ The project is divided in to two layers. Repository layer and Service Layer
  - Service Layer : package 'com.learn.IssueTracker.service'
    - classes/interfaces in this package will be used to analyze the data and provide information
 
- Other packages:
-    - com.learn.IssueTracker.model : contains model classes
-    - com.learn.IssueTracker.exceptions : contains Custom exceptions
-
-    - com.learn.issueTracker.test : Contains Test classes for testing minimum functionality required in the solution. 
+Other packages:
+- com.learn.IssueTracker.model : contains model classes
+- com.learn.IssueTracker.exceptions : contains Custom exceptions
+- com.learn.issueTracker.test : Contains Test classes for testing minimum functionality required in the solution. 
       (The evaluation tests which will run after the project submission, will test the complete requirements, as per the detailed instructions )
 
 
