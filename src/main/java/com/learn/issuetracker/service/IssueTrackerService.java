@@ -23,8 +23,6 @@ public interface IssueTrackerService {
 
 	List<Issue> getOpenIssuesOrderedByPriorityAndResolutionDate();
 
-	// names of employees with issues not closed even after 7 days of Expected
-	// Resolution date
 	List<String> getOpenIssuesDelayedbyEmployees();
 
 	Map<String, Integer> getHighPriorityOpenIssueAssignedTo();
