@@ -1,4 +1,4 @@
-package com.learn.issueTracker.test;
+package com.learn.issuetracker.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

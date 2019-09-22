@@ -1,4 +1,4 @@
-package com.learn.issueTracker.test;
+package com.learn.issuetracker.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -32,7 +32,7 @@ public class IssueTrackerServiceImplTest {
 	private IssueRepositoryImpl dao;
 
 	private IssueTrackerService service;
-	List<Issue> issueList;
+	private List<Issue> issueList;
 
 	@Before
 	public void setUp() throws Exception {

@@ -1,4 +1,4 @@
-package com.learn.issueTracker.test;
+package com.learn.issuetracker.test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -34,7 +34,7 @@ public class IssueRepositoryImplTest {
 	@Test
 	public void testGetIssues() {
 		List<Issue> issues = dao.getIssues();
-		assertNotNull(issues);
+		assertNotNull("List of issues cannot be null",issues);
 	}
 
 	@Test
@@ -63,9 +63,9 @@ public class IssueRepositoryImplTest {
 		new BeanTester().testBean(Issue.class, config);
 		Issue issue = new Issue();
 		issue.setCreatedOn(LocalDate.now());
-		assertNotNull(issue.getCreatedOn());
+		assertNotNull("The created date should be set",issue.getCreatedOn());
 		issue.setAssignedTo(new Employee());
-		assertNotNull(issue.getAssignedTo());
+		assertNotNull("The issue should be assigned to Employee",issue.getAssignedTo());
 	}
 
 }
