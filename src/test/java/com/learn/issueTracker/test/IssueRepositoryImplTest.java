@@ -1,4 +1,4 @@
-package com.learn.issueTracker.commander.test;
+package com.learn.issueTracker.test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;

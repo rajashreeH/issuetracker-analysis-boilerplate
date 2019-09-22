@@ -6,9 +6,9 @@ Lambda expressions, Streams API and NIO enhancements in Java 8
 
 #### To use this as a boilerplate for your new project, you can follow these steps
 
-1. Fork and clone the boilerplate in your local machine
+1. Fork this repository and clone the boilerplate in your local machine
      
-2. Navigate to assignment-solution-step1 folder
+2. Navigate to issuetracker-analysis-boilerplate folder
 
     `cd issuetracker-analysis-boilerplate`
 
