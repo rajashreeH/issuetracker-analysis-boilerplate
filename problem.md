@@ -37,6 +37,8 @@ File contains the employee details in the below order
 
     101,Sunil,Bangalore
 
+#### Project contents and structure
+
 This project contains the boilerplate code for the solution.  The detailed instructions 
 to arrive at the solution are present in the respective source files. Participant needs 
 to read the instruction given in the boilerplate code and complete the solution
