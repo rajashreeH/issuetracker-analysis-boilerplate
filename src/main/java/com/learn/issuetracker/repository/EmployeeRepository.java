@@ -38,7 +38,7 @@ public class EmployeeRepository {
 
 	/*
 	 * getEmployee method should search the 'employees' List based on the input
-	 * employee Id, and return the employee found in an Optional<Employee> object
+	 * employee Id, and return the employee found, in an Optional<Employee> object
 	 */
 	public static Optional<Employee> getEmployee(int empId) {
 		return null;

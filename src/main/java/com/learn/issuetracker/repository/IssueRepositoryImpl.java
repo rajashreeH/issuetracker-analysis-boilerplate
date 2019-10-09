@@ -33,10 +33,11 @@ public class IssueRepositoryImpl implements IssueRepository {
 
 	/*
 	 * This method should read the file from the path stored in variable
-	 * 'issuesFilePath'. It should store all the records read from the file in a
-	 * List and initialize the 'issues' variable with this list. This method should
-	 * use 'parseIssue' method of Utility class for converting the line read from
-	 * the file in to Issue Object
+	 * 'issuesFilePath'. It should store the records read from the file in a List
+	 * and initialize the 'issues' variable with this list. It should use
+	 * 'parseIssue' method of Utility class for converting the line read from the
+	 * file in to an Issue Object. Any issue with ISSUE ID, not starting with "IS",
+	 * should not be stored in the "issues" List.
 	 */
 
 	public void initializeIssuesFromFile() {
