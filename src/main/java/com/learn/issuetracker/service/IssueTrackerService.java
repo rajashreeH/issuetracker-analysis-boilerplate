@@ -31,4 +31,8 @@ public interface IssueTrackerService {
 
 	Map<String, Long> getOpenIssuesCountGroupedbyPriority();
 
+	Map<String, List<String>> getOpenIssueIdGroupedbyLocation();
+
+	Map<String, Long> getHighMediumOpenIssueDuration();
+
 }

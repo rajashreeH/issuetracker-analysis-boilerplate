@@ -135,5 +135,21 @@ public class IssueTrackerServiceImplTest {
 		assertEquals("Size of List of Medium priority open issues should be 2", 2, prIssues.get("MEDIUM").size());
 		assertEquals("Size of List of low priority open issues should be 3", 3, prIssues.get("LOW").size());
 	}
-
+	
+	@Test
+	public void testGetOpenIssueIdGroupedbyLocation() {
+		Map<String, List<String>> issuesByLocation = service.getOpenIssueIdGroupedbyLocation();
+		assertNotNull("Map of open issues by location should not be null",issuesByLocation);
+		assertEquals("Number of locations with open issues should be 5", 5, issuesByLocation.size());
+		assertEquals("Number of open issues in Mysore should be 2", 2, issuesByLocation.get("Mysore").size());
+		assertEquals("Number of open issues in Mandya should be 1", 1, issuesByLocation.get("Mandya").size());
+	}
+	
+	@Test
+	public void testGetHighMediumOpenIssueDuration() {
+		Map<String, Long> issueDuration = service.getHighMediumOpenIssueDuration();
+		assertNotNull("Map of high/medium priority issue cannot be null",issueDuration);
+		assertEquals("Number of high/medium open issues should be 3", 3, issueDuration.size());
+		assertEquals("Number of days between created date and current date is incorrect", Long.valueOf(30), issueDuration.get("ISS03"));
+	}
 }

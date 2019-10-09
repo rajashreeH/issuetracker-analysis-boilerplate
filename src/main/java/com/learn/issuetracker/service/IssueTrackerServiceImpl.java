@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.learn.issuetracker.exceptions.IssueNotFoundException;
 import com.learn.issuetracker.model.Employee;
@@ -137,4 +138,27 @@ public class IssueTrackerServiceImpl implements IssueTrackerService {
 	public Map<String, Long> getOpenIssuesCountGroupedbyPriority() {
 		return null;
 	}
+	
+	/*
+	 * The below method should provide List of issue id's(open), grouped by location
+	 * of the assigned employee. It should return a map with key as location and
+	 * value as List of issue Id's of open issues
+	 */
+	@Override
+	public Map<String, List<String>> getOpenIssueIdGroupedbyLocation() {
+		return null;
+	}
+	
+	/*
+	 * The below method should provide the number of days, since the issue has been
+	 * created, for all high/medium priority open issues. It should return a map
+	 * with issueId as key and number of days as value. Consider the current date as
+	 * 2019-05-01
+	 */
+	@Override
+	public Map<String, Long> getHighMediumOpenIssueDuration() {
+		return null;
+	}
+	
+	
 }
