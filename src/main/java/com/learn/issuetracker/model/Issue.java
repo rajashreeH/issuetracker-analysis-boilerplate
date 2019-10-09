@@ -17,6 +17,7 @@ public class Issue {
 	private Employee assignedTo;
 
 	public Issue() {
+		//Default Constructor
 	}
 
 	/*

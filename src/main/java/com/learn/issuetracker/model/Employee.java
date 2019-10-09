@@ -10,6 +10,7 @@ public class Employee {
 	private String location;
 
 	public Employee() {
+		// Default Constructor
 	}
 
 	/*
@@ -18,6 +19,13 @@ public class Employee {
 	public Employee(int emplId, String name, String location) {
 
 	}
+
+	/*
+	 * Override toString() here . The toString() should return the employee details
+	 * in the below format
+	 * 
+	 * Employee : {Employee Id : xxx; Name : xxxx; Location : xxxxx}
+	 */
 
 	/*
 	 * Complete the Getter and Setters
@@ -45,9 +53,5 @@ public class Employee {
 	public void setLocation(String location) {
 
 	}
-
-	/*
-	 * Override toString() here
-	 */
 
 }

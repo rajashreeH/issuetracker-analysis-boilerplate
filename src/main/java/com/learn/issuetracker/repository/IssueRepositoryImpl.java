@@ -12,7 +12,7 @@ import com.learn.issuetracker.model.Issue;
 public class IssueRepositoryImpl implements IssueRepository {
 
 	/*
-	 * This List will store the issue details read from the f ile
+	 * This List will store the issue details read from the file
 	 */
 	private List<Issue> issues;
 

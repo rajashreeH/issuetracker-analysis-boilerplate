@@ -4,7 +4,7 @@
 Refer the problem.md file for problem description. The solution should use the Java 8 
 Lambda expressions, Streams API and NIO enhancements in Java 8 
 
-#### To use this as a boilerplate for your new project, you can follow these steps
+#### To use this as a boilerplate for your new project, Follow these steps
 
 1. Fork this repository and clone the boilerplate in your local machine
      
@@ -16,8 +16,7 @@ Lambda expressions, Streams API and NIO enhancements in Java 8
      
      `git status`
 
-4. Complete the solution as per the instructions given in problem.md and the boilerplate 
-   code
+4. Complete the solution as per the instructions given in **problem.md** file and the boilerplate code
 
 6. Use the following command to update the index using the current content found in the working tree, to prepare the content staged for the next commit.
 

@@ -13,7 +13,7 @@ import com.learn.issuetracker.repository.IssueRepository;
 
 /*
  * This class contains functionalities for searching and analyzing Issues data Which is stored in a collection
- * Use Java8 streams API to do the analysis
+ * Use JAVA8 STREAMS API to do the analysis
  * 
 */
 public class IssueTrackerServiceImpl implements IssueTrackerService {
@@ -130,9 +130,8 @@ public class IssueTrackerServiceImpl implements IssueTrackerService {
 	}
 
 	/*
-	 * The below method should return count of open issues grouped by priority in a
-	 * map. The map should have key as issue priority and value as count of open
-	 * issues
+	 * The below method should return count of open issues grouped by priority in a map. 
+	 * The map should have key as issue priority and value as count of open issues 
 	 */
 	@Override
 	public Map<String, Long> getOpenIssuesCountGroupedbyPriority() {

@@ -20,7 +20,7 @@ public class EmployeeRepository {
 	/*
 	 * This static block should populate the 'employees' List by calling the static
 	 * method 'initializeEmployeesFromFile' of this class. The path of the
-	 * employees.csv file is "src/data/employees.csv"
+	 * employees.csv file is "src --> data -> employees.csv"
 	 */
 	static {
 
