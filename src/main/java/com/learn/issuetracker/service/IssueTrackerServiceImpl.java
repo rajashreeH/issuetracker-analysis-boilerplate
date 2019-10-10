@@ -113,7 +113,7 @@ public class IssueTrackerServiceImpl implements IssueTrackerService {
 
 	/*
 	 * The below method should return a map with key as issueId and value as
-	 * assigned employee name. THe Map should contain details of open issues having
+	 * assigned employee Id. THe Map should contain details of open issues having
 	 * HIGH priority
 	 */
 	@Override
@@ -159,6 +159,4 @@ public class IssueTrackerServiceImpl implements IssueTrackerService {
 	public Map<String, Long> getHighMediumOpenIssueDuration() {
 		return null;
 	}
-	
-	
 }
