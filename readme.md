@@ -6,17 +6,19 @@ Lambda expressions, Streams API and NIO enhancements in Java 8
 
 #### To use this as a boilerplate for your new project, Follow these steps
 
-1. Fork this repository and clone the boilerplate in your local machine
+1. **FORK** this repository in your Gitlab account
+
+2. **CLONE** the forked repository, containing the boilerplate in your local machine
      
-2. Navigate to issuetracker-analysis-boilerplate folder
+3. Navigate to issuetracker-analysis-boilerplate folder
 
     `cd issuetracker-analysis-boilerplate`
 
-3. Check the status of your repo 
+4. Check the status of your repo 
      
      `git status`
 
-4. Complete the solution as per the instructions given in **problem.md** file and the boilerplate code
+5. Complete the solution as per the instructions given in **problem.md** file and the boilerplate code
 
 6. Use the following command to update the index using the current content found in the working tree, to prepare the content staged for the next commit.
 
