@@ -1,7 +1,7 @@
 package com.learn.issuetracker.service;
 
 import java.time.LocalDate;
-import java.time.Period;
+
 import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
 import java.util.LinkedHashSet;
@@ -11,14 +11,14 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.management.openmbean.TabularType;
+
 
 import com.learn.issuetracker.exceptions.IssueNotFoundException;
 import com.learn.issuetracker.model.Employee;
 import com.learn.issuetracker.model.Issue;
 import com.learn.issuetracker.repository.IssueRepository;
 
-import net.bytebuddy.build.Plugin.Engine.Source.Empty;
+
 
 /*
  * This class contains functionalities for searching and analyzing Issues data Which is stored in a collection
