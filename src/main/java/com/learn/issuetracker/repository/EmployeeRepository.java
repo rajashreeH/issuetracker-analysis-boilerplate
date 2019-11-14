@@ -43,8 +43,7 @@ public class EmployeeRepository {
 				employees=fileData.map(Utility::parseEmployee).collect(Collectors.toList());
 				
 			} catch (IOException e) {
-				
-				e.printStackTrace();
+			
 			}
 	}
 

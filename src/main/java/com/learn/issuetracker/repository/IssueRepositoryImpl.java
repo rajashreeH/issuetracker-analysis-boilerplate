@@ -56,8 +56,7 @@ public class IssueRepositoryImpl implements IssueRepository {
 					.collect(Collectors.toList());
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
 		}
 	}
 

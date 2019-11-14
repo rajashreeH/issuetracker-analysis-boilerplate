@@ -28,9 +28,10 @@ public class Employee {
 	 * 
 	 * Employee : {Employee Id : xxx; Name : xxxx; Location : xxxxx}
 	 */
+
 	@Override
 	public String toString() {
-		return "Employee : {EmployeeId=" + emplId + "; Name=" + name + "; Location=" + location + "}";
+		return "Employee : {EmployeeId:" + emplId + "; Name:" + name + "; Location:" + location + "}";
 	}
 
 	/*
