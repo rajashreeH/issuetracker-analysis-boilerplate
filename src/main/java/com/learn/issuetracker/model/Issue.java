@@ -25,6 +25,14 @@ public class Issue {
 	 */
 	public Issue(String issueId, String summary, LocalDate createdOn, LocalDate expectedResolutionOn, String priority,
 			String status, Employee assignedTo) {
+		
+		this.issueId=issueId;
+		this.createdOn=createdOn;
+		this.expectedResolutionOn=expectedResolutionOn;
+		this.priority=priority;
+		this.status=status;
+		this.assignedTo=assignedTo;
+		this.summary=summary;
 
 	}
 

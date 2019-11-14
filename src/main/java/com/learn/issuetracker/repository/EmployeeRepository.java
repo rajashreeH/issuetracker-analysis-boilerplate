@@ -1,8 +1,13 @@
 package com.learn.issuetracker.repository;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.learn.issuetracker.model.Employee;
 
@@ -23,7 +28,7 @@ public class EmployeeRepository {
 	 * employees.csv file is "src --> data -> employees.csv"
 	 */
 	static {
-
+			initializeEmployeesFromFile(Paths.get("src/data/employees.csv"));
 	}
 
 	/*
@@ -33,7 +38,14 @@ public class EmployeeRepository {
 	 * converting the line read from the file in to Employee Object
 	 */
 	public static void initializeEmployeesFromFile(Path employeesfilePath) {
-
+			
+			try(Stream<String> fileData=Files.lines(employeesfilePath)){
+				employees=fileData.map(Utility::parseEmployee).collect(Collectors.toList());
+				
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
 	}
 
 	/*
@@ -41,7 +53,11 @@ public class EmployeeRepository {
 	 * employee Id, and return the employee found, in an Optional<Employee> object
 	 */
 	public static Optional<Employee> getEmployee(int empId) {
-		return null;
+		
+		Optional<Employee> employee=employees.stream()
+				.filter(e->e.getEmplId()==empId)
+				.findFirst();
+		return employee;
 	}
 
 	// Getter

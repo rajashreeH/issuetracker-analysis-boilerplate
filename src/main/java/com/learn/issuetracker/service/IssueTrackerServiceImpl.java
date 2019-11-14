@@ -1,15 +1,24 @@
 package com.learn.issuetracker.service;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
+import java.util.Comparator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
+
+import javax.management.openmbean.TabularType;
 
 import com.learn.issuetracker.exceptions.IssueNotFoundException;
 import com.learn.issuetracker.model.Employee;
 import com.learn.issuetracker.model.Issue;
 import com.learn.issuetracker.repository.IssueRepository;
+
+import net.bytebuddy.build.Plugin.Engine.Source.Empty;
 
 /*
  * This class contains functionalities for searching and analyzing Issues data Which is stored in a collection
@@ -37,7 +46,9 @@ public class IssueTrackerServiceImpl implements IssueTrackerService {
 	 * value in CURRENT_DATE variable
 	 */
 	public IssueTrackerServiceImpl(IssueRepository issueDao) {
-
+		
+		this.issueDao=issueDao;
+		this.today=LocalDate.parse(CURRENT_DATE);
 	}
 
 	/*
@@ -49,7 +60,11 @@ public class IssueTrackerServiceImpl implements IssueTrackerService {
 	 */
 	@Override
 	public long getClosedIssueCount() {
-		return 0;
+		
+		long countOfClosed=issueDao.getIssues().stream()
+				.filter(i->i.getStatus().equals("CLOSED"))
+				.count();
+		return countOfClosed;
 	}
 
 	/*
@@ -59,7 +74,22 @@ public class IssueTrackerServiceImpl implements IssueTrackerService {
 
 	@Override
 	public Issue getIssueById(String issueId) throws IssueNotFoundException {
-		return null;
+		
+		if(null==issueId||issueId.isEmpty()) {
+			return null;
+		}
+		Optional<Issue> issue= issueDao.getIssues().stream()
+		.filter(i->i.getIssueId().equals(issueId))
+		.findAny();
+		
+		if(issue.isPresent()) {
+			Issue issue2=issue.get();
+			return issue2;
+		}
+		else {
+			
+			throw new IssueNotFoundException();
+		}
 	}
 
 	/*
@@ -70,7 +100,16 @@ public class IssueTrackerServiceImpl implements IssueTrackerService {
 	 */
 	@Override
 	public Optional<Employee> getIssueAssignedTo(String issueId) {
-		return null;
+		
+		Optional<Employee> issueAssignedEmployee=Optional.empty();
+		
+		issueAssignedEmployee=issueDao.getIssues().stream()
+				.filter(i->i.getIssueId().equalsIgnoreCase(issueId))
+				.map(Issue::getAssignedTo)
+				.findAny();
+		
+		
+		return issueAssignedEmployee;
 	}
 
 	/*
@@ -79,7 +118,11 @@ public class IssueTrackerServiceImpl implements IssueTrackerService {
 	 */
 	@Override
 	public List<Issue> getIssuesByStatus(String status) {
-		return null;
+		
+		List<Issue> issuesByStatus=issueDao.getIssues().stream()
+				.filter(i->i.getStatus().equals(status))
+				.collect(Collectors.toList());
+		return issuesByStatus;
 	}
 
 	/*
@@ -88,7 +131,12 @@ public class IssueTrackerServiceImpl implements IssueTrackerService {
 	 */
 	@Override
 	public Set<String> getOpenIssuesInExpectedResolutionOrder() {
-		return null;
+		
+		LinkedHashSet<String> openIssues=issueDao.getIssues().stream()
+				.filter(i->i.getStatus().equalsIgnoreCase("OPEN"))
+				.sorted((i1,i2)->i1.getExpectedResolutionOn().compareTo(i2.getExpectedResolutionOn()))
+				.collect(Collectors.mapping(Issue::getIssueId, Collectors.toCollection(LinkedHashSet::new)));
+		return openIssues;
 	}
 
 	/*
@@ -97,7 +145,14 @@ public class IssueTrackerServiceImpl implements IssueTrackerService {
 	 */
 	@Override
 	public List<Issue> getOpenIssuesOrderedByPriorityAndResolutionDate() {
-		return null;
+		
+		List<Issue> issues=issueDao.getIssues().stream()
+				.filter(i->i.getStatus().equalsIgnoreCase("OPEN"))
+				.sorted(Comparator.comparing(Issue::getPriority).reversed()
+						.thenComparing(Comparator.comparing(Issue::getExpectedResolutionOn)))
+				.collect(Collectors.toList());
+				
+		return issues;
 	}
 
 	/*
@@ -107,7 +162,15 @@ public class IssueTrackerServiceImpl implements IssueTrackerService {
 	 */
 	@Override
 	public List<String> getOpenIssuesDelayedbyEmployees() {
-		return null;
+		
+		List<String> issues=issueDao.getIssues().stream()
+				.filter(i->!i.getStatus().equalsIgnoreCase("closed"))
+				.filter(i->ChronoUnit.DAYS.between(i.getExpectedResolutionOn(), today)>7)
+				.distinct()
+				.map(i->i.getAssignedTo().getName())
+				.collect(Collectors.toList());
+				
+		return issues;
 	}
 
 	/*
@@ -117,7 +180,12 @@ public class IssueTrackerServiceImpl implements IssueTrackerService {
 	 */
 	@Override
 	public Map<String, Integer> getHighPriorityOpenIssueAssignedTo() {
-		return null;
+		
+		Map<String, Integer> issueWithAssignee=issueDao.getIssues().stream()
+				.filter(i->i.getStatus().equalsIgnoreCase("open"))
+				.filter(i->i.getPriority().equalsIgnoreCase("HIGH"))
+				.collect(Collectors.toMap(Issue::getIssueId, i->i.getAssignedTo().getEmplId()));
+		return issueWithAssignee;
 	}
 
 	/*
@@ -126,7 +194,11 @@ public class IssueTrackerServiceImpl implements IssueTrackerService {
 	 */
 	@Override
 	public Map<String, List<Issue>> getOpenIssuesGroupedbyPriority() {
-		return null;
+		
+		Map<String, List<Issue>> issue=issueDao.getIssues().stream()
+				.filter(i->i.getStatus().equalsIgnoreCase("open"))
+				.collect(Collectors.groupingBy(Issue::getPriority,Collectors.toList()));
+		return issue;
 	}
 
 	/*
@@ -135,7 +207,11 @@ public class IssueTrackerServiceImpl implements IssueTrackerService {
 	 */
 	@Override
 	public Map<String, Long> getOpenIssuesCountGroupedbyPriority() {
-		return null;
+		
+		Map<String,Long> issue=issueDao.getIssues().stream()
+				.filter(i->i.getStatus().equalsIgnoreCase("OPEN"))
+				.collect(Collectors.groupingBy(Issue::getPriority,Collectors.counting()));
+		return issue;
 	}
 	
 	/*
@@ -145,7 +221,13 @@ public class IssueTrackerServiceImpl implements IssueTrackerService {
 	 */
 	@Override
 	public Map<String, List<String>> getOpenIssueIdGroupedbyLocation() {
-		return null;
+		
+		Map<String, List<String>> issues=issueDao.getIssues().stream()
+				.filter(i->i.getStatus().equalsIgnoreCase("open"))
+				.collect(Collectors.groupingBy(i->i.getAssignedTo().getLocation(),
+						Collectors.mapping(Issue::getIssueId, Collectors.toList())));
+						
+		return issues;
 	}
 	
 	/*
@@ -156,6 +238,11 @@ public class IssueTrackerServiceImpl implements IssueTrackerService {
 	 */
 	@Override
 	public Map<String, Long> getHighMediumOpenIssueDuration() {
-		return null;
+		
+		Map<String, Long> issues=issueDao.getIssues().stream()
+				.filter(i->i.getStatus().equalsIgnoreCase("OPEN"))
+				.filter(i->!i.getPriority().equalsIgnoreCase("low"))
+				.collect(Collectors.toMap(Issue::getIssueId, i-> ChronoUnit.DAYS.between(i.getCreatedOn(), today)));
+		return issues;
 	}
 }
